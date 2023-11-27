@@ -1,5 +1,7 @@
 package Ejercicio.Hilos.ProcesosEquilibrio;
 
+import static java.lang.Thread.sleep;
+
 public class Recurso {
 
     public int contadorA;
@@ -9,36 +11,30 @@ public class Recurso {
 
     boolean utilizado;
 
-    public synchronized void proporcionar(Object a) throws InterruptedException {
-        while (contadorA+contadorB>N) wait();
-        if (a instanceof ProcesoA){
-            while (contadorB>=contadorA*2)wait();
+    public synchronized void proporcionar(Object proceso) throws InterruptedException {
+        while (contadorA+contadorB>N) {
+            System.out.println(proceso + " se ha de esperar porque contadores "+contadorA+"-"+contadorB+"->"+N);
+            wait();
         }
-        utilizado = true;
+        if (proceso instanceof ProcesoA){
+            while (contadorA*2<contadorB) {
+                wait();
+                System.out.println("Condicion" + contadorA*2 +"<"+contadorB);
+                System.out.println(proceso + " se ha de esperar porque contadores "+contadorA+"-"+contadorB+"->"+N+" --- faltan Bs");
+            }
+            contadorA++;
+            System.out.println("ENTRADO A");
+        }
+        else if ( proceso instanceof ProcesoB) contadorB++;
         notifyAll();
     }
 
-    public synchronized void liberar(){
-        utilizado = false;
+    public synchronized void liberar(Object proceso){
+        if (proceso instanceof ProcesoA)contadorA--;
+        else if (proceso instanceof ProcesoB) contadorB--;
         notifyAll();
     }
 
-
-    public void masContadorA() {
-        contadorA++;
-    }
-
-    public void masContadorB() {
-        contadorB++;
-    }
-
-    public void menosContadorA() {
-        contadorA--;
-    }
-
-    public void menosContadorB() {
-        contadorB--;
-    }
 
 
 }
