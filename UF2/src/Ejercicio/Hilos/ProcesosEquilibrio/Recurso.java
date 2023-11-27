@@ -10,9 +10,18 @@ public class Recurso {
     boolean utilizado;
 
     public synchronized void proporcionar(Object a) throws InterruptedException {
-        while (contadorA+contadorB>N) wait();
+        System.out.println(a+" pide entrar");
+        while (contadorA+contadorB>N) {
+            System.out.println(a + " se ha de esperar porque contadores "+contadorA+"-"+contadorB+"->"+N);
+           wait();
+        }
         if (a instanceof ProcesoA){
-            while (contadorB>=contadorA*2)wait();
+            while (contadorA*2<contadorB) {
+                wait();
+                System.out.println("Condicion" + contadorA*2 +"<"+contadorB);
+                System.out.println(a + " se ha de esperar porque contadores "+contadorA+"-"+contadorB+"->"+N+" --- faltan Bs");
+            }
+            System.out.println("ENTRADO A");
         }
         utilizado = true;
         notifyAll();

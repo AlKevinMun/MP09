@@ -14,13 +14,14 @@ public class ProcesoA extends Thread{
         recurso.masContadorA();
         System.out.println("A: "+recurso.contadorA);
         System.out.println("El proceso" + getName() + " esta siendo utilizado");
-        sleep((long) (Math.random()*1000+3000));
+        sleep((long) (Math.random()*1000+1000));
         }
 
-    public void liberar(){
+    public void liberar() throws InterruptedException {
         recurso.liberar();
         recurso.menosContadorA();
         System.out.println("El proceso" + getName() + " ha terminado");
+        sleep((long) (Math.random()*1000+3000));
     }
 
     @Override
@@ -28,11 +29,16 @@ public class ProcesoA extends Thread{
         while (true){
             try {
                 solicitar();
+
+                liberar();
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-            liberar();
         }
     }
 
+    @Override
+    public String toString() {
+        return "ProcesoA{} " + super.toString();
+    }
 }
