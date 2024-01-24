@@ -1,4 +1,4 @@
-package Exemplos;
+package UF2.Exemplos;
 import java.util.*;
 public class MultiplicarLlistaSeq {
 

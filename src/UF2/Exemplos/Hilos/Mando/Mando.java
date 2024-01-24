@@ -1,4 +1,4 @@
-package Exemplos.Hilos.Mando;
+package UF2.Exemplos.Hilos.Mando;
 
 public class Mando {
     private boolean llibre;

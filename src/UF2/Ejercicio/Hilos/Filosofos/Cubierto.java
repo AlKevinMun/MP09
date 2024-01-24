@@ -1,4 +1,4 @@
-package Ejercicio.Hilos.Filosofos;
+package UF2.Ejercicio.Hilos.Filosofos;
 
 import javax.swing.table.TableRowSorter;
 

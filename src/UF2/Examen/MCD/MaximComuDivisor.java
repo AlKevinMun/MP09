@@ -1,4 +1,4 @@
-package Examen.MCD;
+package UF2.Examen.MCD;
 
 import java.util.concurrent.RecursiveTask;
 

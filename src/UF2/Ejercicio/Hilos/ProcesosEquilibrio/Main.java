@@ -1,4 +1,4 @@
-package Ejercicio.Hilos.ProcesosEquilibrio;
+package UF2.Ejercicio.Hilos.ProcesosEquilibrio;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;

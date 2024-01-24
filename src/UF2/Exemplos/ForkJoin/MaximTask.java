@@ -1,4 +1,4 @@
-package Exemplos.ForkJoin;
+package UF2.Exemplos.ForkJoin;
 
 import java.util.concurrent.RecursiveTask;
 

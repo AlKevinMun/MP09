@@ -1,4 +1,4 @@
-package Exemplos;
+package UF2.Exemplos;
 import java.util.*;
 import java.util.concurrent.*;
 

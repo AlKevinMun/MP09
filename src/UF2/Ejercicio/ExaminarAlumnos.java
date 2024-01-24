@@ -1,4 +1,4 @@
-package Ejercicio;
+package UF2.Ejercicio;
 
 import java.util.*;
 

@@ -1,4 +1,4 @@
-package Ejercicio.Hilos.ProcesosEquilibrio;
+package UF2.Ejercicio.Hilos.ProcesosEquilibrio;
 
 public class ProcesoA extends Thread{
 

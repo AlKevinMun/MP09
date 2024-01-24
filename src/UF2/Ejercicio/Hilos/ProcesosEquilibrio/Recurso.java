@@ -1,4 +1,4 @@
-package Ejercicio.Hilos.ProcesosEquilibrio;
+package UF2.Ejercicio.Hilos.ProcesosEquilibrio;
 
 import static java.lang.Thread.sleep;
 

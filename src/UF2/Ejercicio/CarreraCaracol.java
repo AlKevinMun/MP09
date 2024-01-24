@@ -1,6 +1,6 @@
-package Ejercicio;
+package UF2.Ejercicio;
 
-import Exemplos.TascaProgramada;
+import UF2.Exemplos.TascaProgramada;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;

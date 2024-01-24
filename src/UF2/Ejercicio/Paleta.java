@@ -1,4 +1,4 @@
-package Ejercicio;
+package UF2.Ejercicio;
 public class Paleta implements Runnable{
     private String Nom;
 

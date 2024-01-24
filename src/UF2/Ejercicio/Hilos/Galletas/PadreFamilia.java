@@ -1,4 +1,4 @@
-package Ejercicio.Hilos.Galletas;
+package UF2.Ejercicio.Hilos.Galletas;
 
 public class PadreFamilia extends Thread {
     PotGaletes pot;

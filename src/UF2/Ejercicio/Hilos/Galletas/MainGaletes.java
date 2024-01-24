@@ -1,4 +1,4 @@
-package Ejercicio.Hilos.Galletas;
+package UF2.Ejercicio.Hilos.Galletas;
 
 public class MainGaletes {
     public static void main(String[] args) {

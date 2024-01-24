@@ -1,4 +1,4 @@
-package UF3.exemples;
+package UF3.actividades.Tasca2;
 
 import java.io.IOException;
 import java.net.*;
@@ -60,18 +60,17 @@ public class DatagramSocketClient {
 
     private boolean mustContinue(byte[] data) {
         //procés diferent per cada aplicació
-        if (ByteBuffer.wrap(data).getInt() == 0){
+        if (ByteBuffer.wrap(data).getInt() == 0 && attemts !=0){
             System.out.println("Has acertado el numero en el intento: "+attemts);
             return false;
         }
-    return true;
+        return true;
     }
 
     private String convertResposeServer(byte[]data){
         int n = ByteBuffer.wrap(data).getInt();
         String msg = null;
-        if (n==0){msg = "Has acertado el numero";
-            System.out.println("Lo has logrado en el intento: "+attemts);}
+        if (n==0){msg = "Lo has logrado en el intento: "+attemts;}
         else if (n==1) {msg = "Es un numero mas pequeño"; attemts++;}
         else msg = "Es un numero mayor"; attemts++;
 

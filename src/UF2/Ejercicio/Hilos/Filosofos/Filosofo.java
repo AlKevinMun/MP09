@@ -1,4 +1,4 @@
-package Ejercicio.Hilos.Filosofos;
+package UF2.Ejercicio.Hilos.Filosofos;
 
 public class Filosofo extends Thread{
     Cubierto c1;

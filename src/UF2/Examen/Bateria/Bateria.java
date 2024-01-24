@@ -1,4 +1,4 @@
-package Examen.Bateria;
+package UF2.Examen.Bateria;
 
 public class Bateria {
     private int nivell;

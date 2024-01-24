@@ -1,4 +1,4 @@
-package UF3.exemples;
+package UF3.actividades.Tasca2;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -10,10 +10,13 @@ import java.nio.ByteBuffer;
 public class DatagramSocketServer {
     DatagramSocket socket;
     SecretNum secretNum;
+    boolean acabar;
+    int fi = -1;
 
     public void init(int port) throws SocketException {
         socket = new DatagramSocket(port);
         secretNum = new SecretNum(100);
+        acabar = true;
     }
 
     public void runServer() throws IOException {
@@ -23,9 +26,9 @@ public class DatagramSocketServer {
         int clientPort;
 
         //el servidor atén el port indefinidament
-        while(true){
+        while(acabar){
             //creació del paquet per rebre les dades
-            DatagramPacket packet = new DatagramPacket(receivingData, 1024);
+            DatagramPacket packet = new DatagramPacket(receivingData, 4);
             //espera de les dades
             socket.receive(packet);
             //processament de les dades rebudes i obtenció de la resposta
@@ -49,6 +52,8 @@ public class DatagramSocketServer {
         //System.out.println(dataToTransform);
         int n = ByteBuffer.wrap(data).getInt();
         int num=secretNum.comprova(n);
+        fi = secretNum.comprova(num);
+        if (fi==0) acabar = false;
         byte[] missatge = ByteBuffer.allocate(4).putInt(num).array();
         return missatge;
     }

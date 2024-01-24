@@ -1,4 +1,4 @@
-package UF3.exemples;
+package UF3.actividades.Tasca2;
 
 
 public class SecretNum {

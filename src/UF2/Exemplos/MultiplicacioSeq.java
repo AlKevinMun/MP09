@@ -1,4 +1,4 @@
-package Exemplos;
+package UF2.Exemplos;
 
 public class MultiplicacioSeq {
     private int op1;

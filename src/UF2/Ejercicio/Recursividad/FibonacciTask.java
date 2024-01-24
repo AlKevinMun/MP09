@@ -1,4 +1,4 @@
-package Ejercicio.Recursividad;
+package UF2.Ejercicio.Recursividad;
 
 import java.util.concurrent.RecursiveTask;
 

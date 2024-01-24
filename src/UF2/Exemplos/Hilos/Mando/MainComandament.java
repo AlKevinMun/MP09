@@ -1,4 +1,4 @@
-package Exemplos.Hilos.Mando;
+package UF2.Exemplos.Hilos.Mando;
 
 public class MainComandament {
     public static void main(String[] args) {

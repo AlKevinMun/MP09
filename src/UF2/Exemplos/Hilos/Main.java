@@ -1,4 +1,4 @@
-package Exemplos.Hilos;
+package UF2.Exemplos.Hilos;
 
 public class Main {
     public static void main(String[] args) {
