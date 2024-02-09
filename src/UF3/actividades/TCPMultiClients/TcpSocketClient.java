@@ -12,8 +12,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class TcpSocketClient {
+public class TcpSocketClient extends Thread{
     private Scanner sc = new Scanner(System.in);
+    private Llista lista;
 
     public void connect(String address, int port) {
         String serverData;
