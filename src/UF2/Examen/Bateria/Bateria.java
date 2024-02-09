@@ -38,7 +38,7 @@ public class Bateria {
 
     /**
      * Mètode per decrementar el nivell de càrrega de la bateria
-     * decrementa en un 1% cada crida al mètode i actualitza l'estat de buida si arriba a 0%
+     * decrementa en un 1% cada crida al mètode i actualitza l'estat de buida si arriba TcpSocketServer.java 0%
      */
     public void descarregar() {
         if(!buida) {

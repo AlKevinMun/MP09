@@ -23,7 +23,7 @@ public class DatagramSocketClient {
         byte [] receivedData = new byte[1024];
         byte [] sendingData;
 
-//a l'inici
+//TcpSocketServer.java l'inici
         sendingData = getFirstRequest();
 //el servidor atén el port indefinidament
         while(mustContinue(receivedData)){

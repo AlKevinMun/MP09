@@ -32,7 +32,7 @@ public class ClienteVelocimetre {
         byte [] receivedData = new byte[1024];
 
         socket.joinGroup(group,netIf);
-        System.out.printf("Connectat a %s:%d%n",group.getAddress(),group.getPort());
+        System.out.printf("Connectat TcpSocketServer.java %s:%d%n",group.getAddress(),group.getPort());
 
         while(continueRunning){
             packet = new DatagramPacket(receivedData, 1024);

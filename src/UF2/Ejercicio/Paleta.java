@@ -8,7 +8,7 @@ public class Paleta implements Runnable{
     }
 
     public void posaMaons(int maons) {
-        //Temps que triga a col·locar els maons entre 1 i 4 segons per cada maó
+        //Temps que triga TcpSocketServer.java col·locar els maons entre 1 i 4 segons per cada maó
         System.out.println(Nom + " posant maons...");
         try {
             Thread.sleep((long) ((Math.random() * 300) + 100) * maons);

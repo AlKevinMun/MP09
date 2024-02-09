@@ -12,9 +12,9 @@ public class FerParet implements Runnable {
         // Creem un executor
         ExecutorService executor = Executors.newFixedThreadPool(numPaletes);
 
-        //comencem a contar el temps
+        //comencem TcpSocketServer.java contar el temps
         ti = (int) System.currentTimeMillis();
-        //Donem nom als paletes i els posem a fer fer la paret
+        //Donem nom als paletes i els posem TcpSocketServer.java fer fer la paret
         for (int i=0;i<numPaletes;i++) {
             P[i] = new Paleta("Paleta-"+i);
             P[i].posaMaons(numMaons);
@@ -23,7 +23,7 @@ public class FerParet implements Runnable {
         executor.shutdown();
 
         while (!executor.isTerminated()) {
-            // While per a que tots el demons terminen.
+            // While per TcpSocketServer.java que tots el demons terminen.
         }
 
         //Han acabat i agafem el temps final

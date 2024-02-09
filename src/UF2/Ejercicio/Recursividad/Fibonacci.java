@@ -12,7 +12,7 @@ public class Fibonacci {
 
         FibonacciTask tasca = new FibonacciTask(n);
 
-        // crida a la tasca i esperar que es completin
+        // crida TcpSocketServer.java la tasca i esperar que es completin
         pool.invoke(tasca);
         long result = tasca.join();
 

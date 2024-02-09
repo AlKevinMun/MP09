@@ -2,7 +2,7 @@ package UF3.actividades.Tasca2;
 
 
 public class SecretNum {
-    /* Classe que genera numeros aleatoris per jugar a adivinar-los i els comprova
+    /* Classe que genera numeros aleatoris per jugar TcpSocketServer.java adivinar-los i els comprova
      * tant si rep un numero o una string.
      */
 
