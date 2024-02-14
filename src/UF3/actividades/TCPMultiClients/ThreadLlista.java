@@ -1,6 +1,8 @@
 package UF3.actividades.TCPMultiClients;
 import java.io.*;
 import java.net.Socket;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -37,7 +39,7 @@ public class ThreadLlista implements Runnable{
                 System.out.println("Nombre: "+llista.getNom()+"Numeros desordenados: "+llista.getNumberList());
 
                 //Ordenar los numeros
-                llista.getNumberList().sort((o1,o2) -> o1.compareTo(o2));
+                Collections.sort(llista.getNumberList());
                 //Remover los repetiros
                 Set<Integer> set = new HashSet<Integer>(llista.getNumberList());
                 llista.getNumberList().clear();

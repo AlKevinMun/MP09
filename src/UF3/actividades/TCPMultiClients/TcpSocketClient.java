@@ -1,12 +1,11 @@
 package UF3.actividades.TCPMultiClients;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintStream;
+import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,49 +14,57 @@ import java.util.logging.Logger;
 public class TcpSocketClient extends Thread{
     private Scanner sc = new Scanner(System.in);
     private Llista lista;
+    private InputStream in;
+    private OutputStream out;
 
     public void connect(String address, int port) {
         String serverData;
-        String request;
-        boolean continueConnected=true;
+        Llista request;
         Socket socket;
-        BufferedReader in;
-        PrintStream out;
+
+
         try {
             socket = new Socket(InetAddress.getByName(address), port);
-            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            out = new PrintStream(socket.getOutputStream());
+            in = socket.getInputStream();
+            out = socket.getOutputStream();
+            ObjectOutputStream oos = new ObjectOutputStream(out);
+            //Llegim la jugada
+            ObjectInputStream ois = new ObjectInputStream(in);
             //el client atén el port fins que decideix finalitzar
-            while(continueConnected){
-                serverData = in.readLine();
-                //processament de les dades rebudes i obtenció d'una nova petició
-                request = getRequest(serverData);
-                //enviament de la petició
-                out.println(request);//assegurem que acaba amb un final de línia
-                out.flush(); //assegurem que s'envia
-                //comprovem si la petició és un petició de finalització i en cas
-                //que ho sigui ens preparem per sortir del bucle
-                continueConnected = mustFinish(request);
-            }
+            //processament de les dades rebudes i obtenció d'una nova petició
+            request = getRequest();
+            //enviament de la petició
+            oos.writeObject(request);//assegurem que acaba amb un final de línia
+            out.flush(); //assegurem que s'envia
+            //comprovem si la petició és un petició de finalització i en cas
+            //que ho sigui ens preparem per sortir del bucle
+
+            //Espera a recibir la lista del servidor
+            lista = (Llista) ois.readObject();
+            System.out.println("Nombre de la lista: "+ lista.getNom()+" Numeros de la lista: "+lista.getNumberList());
 
             close(socket);
         } catch (UnknownHostException ex) {
             System.out.printf("Error de connexió. No existeix el host, %s", ex);
         } catch (IOException ex) {
             System.out.printf("Error de connexió indefinit, %s", ex);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
 
     }
 
-    private boolean mustFinish(String request) {
-        if(request.equals("bye")) return false;
-        else return true;
-    }
-
-    private String getRequest(String serverData) {
-        System.out.println("servidor$ " + serverData);
-        System.out.print("$ ");
-        return sc.nextLine();
+    private Llista getRequest() {
+        //System.out.println("servidor$ " + serverData);
+        //System.out.print("$ ");
+        System.out.println("Escribe un nombre para la lista: ");
+        String nombreLista = sc.nextLine();
+        System.out.println("Escribe un conjunto de numeros: ");
+        List<Integer> listaNumeris = new ArrayList<>();
+        while (sc.hasNextInt()){
+            listaNumeris.add(sc.nextInt());
+        }
+        return new Llista(nombreLista, listaNumeris);
     }
 
     private void close(Socket socket){
